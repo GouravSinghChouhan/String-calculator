@@ -1,4 +1,3 @@
-
 def add(numbers: str) -> int:
     if numbers == '':
         return 0
@@ -11,10 +10,18 @@ def add(numbers: str) -> int:
     numbers = numbers.replace("\n", delimiter)
     parts = numbers.split(delimiter)
 
-    negatives =  [part for part in parts if int(part) < 0]
+    total = 0
+    negatives = []
+    for part in parts:
+        value = int(part)
+        if value < 0:
+            negatives.append(part)
+        elif value < 1000:
+            total += value
+
     if negatives:
         raise ValueError(
             f"Negative numbers not allowed {','.join(negatives)}"
         )
 
-    return sum(int(part) for part in parts)
+    return total
