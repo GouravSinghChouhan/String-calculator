@@ -3,8 +3,7 @@ def add(numbers: str) -> int:
     if numbers == '':
         return 0
 
-    parts = numbers.split(',')
-    total = 0
-    for part in parts:
-        total+=int(part)
-    return total
+    numbers = numbers.replace("\n", ",")
+    parts = numbers.split(",")
+
+    return sum(int(part) for part in parts)
