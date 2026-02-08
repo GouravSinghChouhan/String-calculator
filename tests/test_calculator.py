@@ -25,3 +25,7 @@ def test_custom_delimiter():
 def test_negative_number_throws_exception():
     with pytest.raises(ValueError, match="Negative numbers not allowed -1"):
         add("-1,2")
+
+def test_multiple_negative_numbers():
+    with pytest.raises(ValueError, match="Negative numbers not allowed -1,-3,-7"):
+        add("-1,2,-3,4,6,-7")
