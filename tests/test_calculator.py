@@ -12,3 +12,6 @@ def test_two_numbers_comma_separated():
 
 def test_multiple_numbers():
     assert add("1,2,3,4") == 10
+
+def test_newline_between_numbers():
+    assert add("1\n2,3") == 6
