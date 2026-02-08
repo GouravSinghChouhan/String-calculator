@@ -9,3 +9,6 @@ def test_single_number_returns_value():
 
 def test_two_numbers_comma_separated():
     assert add("1,5") == 6
+
+def test_multiple_numbers():
+    assert add("1,2,3,4") == 10
