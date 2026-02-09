@@ -1,14 +1,21 @@
+import re
+
+
 def add(numbers: str) -> int:
     if numbers == '':
         return 0
-    delimiter = ","
+    delimiters = [",", "\n"]
 
     if numbers.startswith("//"):
         header, numbers = numbers.split("\n", 1)
-        delimiter = header[2:]
 
-    numbers = numbers.replace("\n", delimiter)
-    parts = numbers.split(delimiter)
+        if "[" in header:
+            delimiters = re.findall(r"\[(.*?)]", header)
+        else:
+            delimiters = [header[2:]]
+
+    pattern = "|".join(map(re.escape, delimiters))
+    parts = re.split(pattern, numbers)
 
     total = 0
     negatives = []
